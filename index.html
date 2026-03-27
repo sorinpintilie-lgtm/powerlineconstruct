@@ -182,6 +182,7 @@
       overflow: hidden; 
     }
     .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .hero-img-mobile { display: none; }
     .hero-image-overlay { 
       position: absolute; 
       inset: 0; 
@@ -531,6 +532,12 @@
       .hero-desc, .hero-stats { 
         display: none; 
       }
+      .hero-img-desktop { 
+        display: none; 
+      }
+      .hero-img-mobile { 
+        display: block; 
+      }
       .hero-image img { 
         object-position: 75% center; 
       }
@@ -591,7 +598,8 @@
       </div>
     </div>
     <div class="hero-image">
-      <img src="hero.jpg" alt="Specialist Powerline Construct la tablou electric">
+      <img src="hero.jpg" alt="Specialist Powerline Construct la tablou electric" class="hero-img-desktop">
+      <img src="pwr4.jpeg" alt="Specialist Powerline Construct la tablou electric" class="hero-img-mobile">
       <div class="hero-image-overlay"></div>
       
     </div>
@@ -625,9 +633,7 @@
 
       <div class="services-grid">
         <div class="svc reveal" style="background-image: url('pwr15.jpeg');">
-          <span class="svc-num">01</span>
           <div class="svc-content">
-            <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
             <h3>Instalații electrice</h3>
             <p>Execuție instalații electrice pentru spații rezidențiale, comerciale și tehnice, cu atenție la siguranță, trasee curate și soluții potrivite lucrării.</p>
           </div>
@@ -635,9 +641,7 @@
         </div>
 
         <div class="svc reveal" style="background-image: url('pwr14.JPG');">
-          <span class="svc-num">02</span>
           <div class="svc-content">
-            <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h4M13 12h4M7 16h10"/></svg></div>
             <h3>Tablouri electrice</h3>
             <p>Montaj, organizare și configurare tablouri electrice pentru alimentare sigură, protecție și distribuție corectă a circuitelor.</p>
           </div>
@@ -645,9 +649,7 @@
         </div>
 
         <div class="svc reveal" style="background-image: url('pwr13.jpg');">
-          <span class="svc-num">03</span>
           <div class="svc-content">
-            <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
             <h3>Curenți slabi</h3>
             <p>Trasee, rack-uri, organizare cablare și integrare pentru lucrări de curenți slabi, prezentate clar și profesionist, fără a încărca inutil site-ul.</p>
           </div>
@@ -655,9 +657,7 @@
         </div>
 
         <div class="svc reveal" style="background-image: url('pwr5.jpeg');">
-          <span class="svc-num">04</span>
           <div class="svc-content">
-            <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
             <h3>Intervenții & mentenanță</h3>
             <p>Verificări, remedieri și intervenții punctuale pentru instalații și echipamente, acolo unde este nevoie de reacție rapidă și execuție corectă.</p>
           </div>
@@ -665,9 +665,7 @@
         </div>
 
         <div class="svc reveal" style="background-image: url('pwr3.jpeg');">
-          <span class="svc-num">05</span>
           <div class="svc-content">
-            <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 17h20M5 17l1.5-5h8L19 17M9 12V8h5"/></svg></div>
             <h3>Bobcat 773</h3>
             <p>Miniîncărcător pentru săpături ușoare, umpluturi, nivelări, transport materiale și lucrări rapide în spații unde contează manevrabilitatea.</p>
           </div>
@@ -675,9 +673,7 @@
         </div>
 
         <div class="svc reveal" style="background-image: url('pwr12.JPG');">
-          <span class="svc-num">06</span>
           <div class="svc-content">
-            <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18h18M6 18V9l6-3 6 3v9M9 18v-4h6v4"/></svg></div>
             <h3>Miniexcavator 2,7t</h3>
             <p>Pentru șanțuri, fundații, decopertări și lucrări de teren executate controlat, inclusiv în curți sau zone mai greu accesibile.</p>
           </div>
@@ -826,7 +822,7 @@
       </div>
 
       <div class="portfolio-item reveal">
-        <img src="pwr7.jpeg" alt="Miniexcavator la lucrare">
+        <img src="pwr11.jpeg" alt="Miniexcavator la lucrare">
         <div class="portfolio-caption">
           <strong>Miniexcavator 2,7t</strong>
           <span>Sprijin pentru lucrări de săpătură și fundații</span>
