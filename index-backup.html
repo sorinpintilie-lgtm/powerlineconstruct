@@ -3,35 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Powerline Construct | Instalații electrice, tablouri electrice și lucrări mecanizate</title>
-  <meta name="description" content="Executăm instalații electrice, tablouri electrice, curenți slabi și lucrări mecanizate cu Bobcat și miniexcavator 2,7t. Contact pentru ofertă în Constanța și împrejurimi.">
+  <title>Powerline Construct SRL – Instalații Electrice & Utilaje, Constanța</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Barlow:wght@500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
+      --gold: #E8960C;
+      --gold-light: #F5A823;
       --white: #FFFFFF;
-      --light: #F5F5F5;
-      --light-2: #EFEFEF;
-      --dark-section: #171717;
-      --border: rgba(0, 0, 0, 0.10);
+      --light: #F9FAFB;
+      --dark-section: #111827;
+      --border: rgba(0, 0, 0, 0.08);
       --text: #111111;
       --muted: #6B7280;
-      --accent: #111111;
-      --accent-hover: #2A2A2A;
-      --soft-dark: rgba(17, 17, 17, 0.06);
-      --soft-dark-2: rgba(17, 17, 17, 0.10);
+      --light-gold: rgba(232, 150, 12, 0.07);
+      /* Promo Bar Variables */
+      --promo-height: 40px;
+      --promo-safe-top: env(safe-area-inset-top, 0px);
+      --promo-total: calc(var(--promo-height) + var(--promo-safe-top));
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--white); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+    body { background: var(--white); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; overflow-x: hidden; padding-top: var(--promo-total); }
 
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--light); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* ── PROMO BAR STYLES ── */
+    .promo-bar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;
+      background-color: #FDE047; color: #422006; height: var(--promo-height);
+      padding-top: var(--promo-safe-top); box-sizing: content-box; font-size: 13.5px; font-weight: 500;
+    }
+    .promo-container { height: 100%; max-width: 1240px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; }
+    .promo-desktop { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 15px; }
+    .promo-text { white-space: nowrap; }
+    .promo-text a { color: #854d0e; font-weight: 600; transition: color 0.2s; text-decoration: none;}
+    .promo-text a:hover { color: #a16207; }
+    .promo-btn {
+      background-color: #ca8a04; color: white; padding: 5px 14px; text-decoration: none;
+      border-radius: 20px; font-size: 13px; font-weight: 600; transition: all 0.3s;
+    }
+    .promo-btn:hover { background-color: #a16207; transform: scale(1.05); }
+
+    /* Promo Bar Mobile Styles */
+    .promo-mobile { display: none; width: 100%; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; }
+    .promo-mobile .truncate { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .promo-mobile .no-wrap { white-space: nowrap; flex-shrink: 0; }
+    .promo-mobile a { color: #854d0e; font-weight: 600; flex-shrink: 0; text-decoration: none;}
+
+    @media (max-width: 768px) {
+      .promo-desktop { display: none; }
+      .promo-mobile { display: flex; }
+    }
 
     /* ── FLOATING WHATSAPP BUTTON ── */
     .whatsapp-float {
@@ -84,7 +113,7 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 68px;
+      position: fixed; top: var(--promo-total); left: 0; right: 0; z-index: 200; height: 68px;
       background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
     }
     .nav-inner { max-width: 1280px; margin: 0 auto; height: 100%; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
@@ -92,41 +121,47 @@
     .nav-logo-box {
       background: var(--dark-section);
       height: 100%;
-      padding: 8px 18px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       margin-left: -32px;
       text-decoration: none;
+      gap: 12px;
     }
     .nav-logo-box img {
-      height: 50px;
+      height: 32px;
       display: block;
       object-fit: contain;
     }
-    .text-logo { display: none; }
+    .text-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--white);
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+    }
+    .text-logo span { color: var(--gold); }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
+    /* Meniu Ascuns (Global) */
+    .nav-links { 
+      position: fixed; top: var(--promo-total); left: 0; right: 0; 
+      background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; padding: 48px 0; list-style: none;
+      transform: translateY(-120%); transition: transform 0.4s ease, opacity 0.4s ease; 
+      border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      z-index: 190; opacity: 0; visibility: hidden;
     }
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s, opacity 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); opacity: 0.7; }
-    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 12px 20px; border-radius: 2px; transition: background 0.2s !important; }
-    .nav-cta:hover { background: var(--accent-hover) !important; color: var(--white) !important; opacity: 1 !important; }
+    .nav-links.open { transform: translateY(0); opacity: 1; visibility: visible; }
+    .nav-links a { color: var(--text); text-decoration: none; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: #000 !important; padding: 12px 28px; border-radius: 2px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; color: #000 !important; }
     
-    .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 6px; z-index: 201; }
+    /* Buton Hamburger */
+    .hamburger { display: flex; flex-direction: column; gap: 6px; cursor: pointer; padding: 6px; z-index: 201; }
     .hamburger span { width: 26px; height: 2px; background: var(--text); display: block; transition: all 0.3s ease-in-out; transform-origin: center; }
+    
+    /* Animație Hamburger -> X */
     .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -134,75 +169,67 @@
     /* ── HERO ── */
     .space-mobile { display: none; }  
     #hero { 
-      min-height: calc(100vh - 68px); 
+      min-height: calc(100vh - 68px - var(--promo-total)); 
       margin-top: 68px; 
-      display: flex;
+      display: flex; /* Changed from grid */
       align-items: center; 
-      position: relative;
+      position: relative; /* Allows background image absolute positioning */
       background: var(--white); 
     }
     .hero-content { 
       position: relative; 
-      z-index: 2;
+      z-index: 2; /* Keeps text above the image */
       width: 100%;
-      max-width: 800px;
+      max-width: 800px; /* Constrains the text width */
       display: flex; 
       flex-direction: column; 
       justify-content: center; 
       padding: 40px 64px 40px max(32px, calc((100vw - 1280px) / 2 + 32px)); 
     }
-    .hero-label { display: inline-flex; align-items: center; gap: 10px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-    .hero-label::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
-    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5vw, 4.8rem); line-height: 0.95; color: var(--text); margin-bottom: 18px; letter-spacing: 0.02em; }
-    h1 span { color: var(--accent); }
-    .hero-slogan {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: clamp(1rem, 1.6vw, 1.35rem);
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 24px;
-      max-width: 520px;
-    }
-    .hero-desc { font-size: 1rem; color: var(--text); font-weight: 500; line-height: 1.7; max-width: 440px; margin-bottom: 36px; border-left: 2px solid var(--accent); padding-left: 18px; }
+    .hero-label { display: inline-flex; align-items: center; gap: 10px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .hero-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5vw, 4.8rem); line-height: 0.95; color: var(--text); margin-bottom: 24px; letter-spacing: 0.02em; }
+    h1 span { color: var(--gold); }
+    .hero-desc { font-size: 1rem; color: var(--text); font-weight: 500; line-height: 1.7; max-width: 440px; margin-bottom: 36px; border-left: 2px solid var(--gold); padding-left: 18px; }
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; border-radius: 2px; padding: 13px 28px; transition: all 0.2s; }
-    .btn-primary { background: var(--accent); color: var(--white); }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-primary { background: var(--gold); color: #000; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
     .btn-ghost { background: transparent; border: 1px solid var(--text); color: var(--text); }
     .btn-ghost:hover { background: var(--text); color: var(--white); }
     .hero-stats { display: flex; gap: 40px; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.1); }
-    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--accent); line-height: 1; display: block; margin-bottom: 4px; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--gold); line-height: 1; display: block; margin-bottom: 4px; }
     .stat-label { font-size: 0.72rem; color: var(--text); letter-spacing: 0.06em; font-family: 'Barlow', sans-serif; font-weight: 600; text-transform: uppercase; }
     
+    /* Full Background Image Styles */
     .hero-image { 
       position: absolute; 
       inset: 0; 
-      z-index: 1;
+      z-index: 1; /* Sits behind the text */
       overflow: hidden; 
     }
     .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-
     .hero-image-overlay { 
       position: absolute; 
       inset: 0; 
+      /* Desktop: din stânga (alb) spre dreapta (transparent) */
       background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0) 100%); 
     }
-    .hero-badge { position: absolute; bottom: 32px; right: 32px; background: rgba(255, 255, 255, 0.95); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 16px 20px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .hero-badge { position: absolute; bottom: 32px; right: 32px; background: rgba(255, 255, 255, 0.95); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 16px 20px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
     .hero-badge strong { display: block; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text); letter-spacing: 0.04em; }
     .hero-badge span { font-size: 0.78rem; color: var(--muted); }
 
     /* ── TICKER ── */
-    .ticker { background: var(--dark-section); color: var(--white); padding: 11px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.06); }
+    .ticker { background: var(--gold); color: #000; padding: 11px 0; overflow: hidden; border-top: 1px solid rgba(0, 0, 0, 0.2); }
     .ticker-track { display: flex; gap: 60px; animation: ticker 30s linear infinite; width: max-content; }
     .ticker-item { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; display: flex; align-items: center; gap: 16px; }
-    .ticker-item::after { content: '//'; opacity: 0.28; color: rgba(255,255,255,0.4); }
+    .ticker-item::after { content: '//'; opacity: 0.4; }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ── SECTION GLOBALS ── */
     .section { padding: 80px max(32px, calc((100vw - 1280px) / 2 + 32px)); }
-    .sec-label { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .sec-label::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+    .sec-label { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .sec-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
     h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); color: var(--text); line-height: 1; margin-bottom: 14px; letter-spacing: 0.03em; }
     .sec-desc { font-size: 0.95rem; color: var(--muted); max-width: 500px; line-height: 1.8; }
 
@@ -227,21 +254,21 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(17,17,17, 0.95) 10%, rgba(17,17,17, 0.28) 100%);
+      background: linear-gradient(to top, rgba(17,24,39, 0.95) 10%, rgba(17,24,39, 0.3) 100%);
       transition: all 0.4s ease;
       z-index: 1;
     }
     .svc:hover::before {
-      background: linear-gradient(to top, rgba(17,17,17, 0.98) 10%, rgba(17, 17, 17, 0.55) 100%);
+      background: linear-gradient(to top, rgba(17,24,39, 0.98) 10%, rgba(232, 150, 12, 0.6) 100%);
     }
     .svc-content { position: relative; z-index: 2; }
     .svc-icon {
       width: 48px; height: 48px; margin-bottom: 24px;
-      background: rgba(17, 17, 17, 0.08);
-      border: 1px solid rgba(17, 17, 17, 0.16);
+      background: rgba(232, 150, 12, 0.15);
+      border: 1px solid rgba(232, 150, 12, 0.3);
       display: flex; align-items: center; justify-content: center; border-radius: 2px;
     }
-    .svc-icon svg { color: var(--accent); }
+    .svc-icon svg { color: var(--gold); }
     .svc-num {
       position: absolute; top: 24px; right: 28px;
       font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem;
@@ -253,7 +280,7 @@
       color: var(--white); margin-bottom: 12px; line-height: 1.3; letter-spacing: 0.02em;
     }
     .svc p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
-    .svc-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; z-index: 2;}
+    .svc-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; z-index: 2;}
     .svc:hover .svc-bar { transform: scaleX(1); }
 
     /* ── UTILAJE ── */
@@ -261,21 +288,22 @@
     .utilaje-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .utilaje-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
     .utilaj { background: var(--white); padding: 28px 32px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; border-left: 3px solid transparent; transition: all 0.2s; }
-    .utilaj:hover { border-left-color: var(--accent); background: var(--light); }
+    .utilaj:hover { border-left-color: var(--gold); background: var(--light); }
     .utilaj-ico { width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; border-radius: 2px; flex-shrink: 0; overflow: hidden; }
     .utilaj-ico img { width: 100%; height: 100%; object-fit: contain; }
     .utilaj h4 { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
     .utilaj p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
     
-    .utilaje-right { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 80px; }
+    /* Sticky Setup */
+    .utilaje-right { display: flex; flex-direction: column; gap: 24px; position: sticky; top: calc(80px + var(--promo-total)); }
     
-    .utilaje-cta { background: var(--light); border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 36px; }
+    .utilaje-cta { background: var(--light); border: 1px solid var(--border); border-top: 3px solid var(--gold); padding: 36px; }
     .utilaje-cta strong { display: block; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); margin-bottom: 8px; letter-spacing: 0.02em; }
     .utilaje-cta p { font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
-    .phone-link { display: flex; align-items: center; gap: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.06em; color: var(--text); text-decoration: none; margin-bottom: 16px; transition: color 0.2s; }
-    .phone-link:hover { color: var(--accent-hover); }
+    .phone-link { display: flex; align-items: center; gap: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.06em; color: var(--gold); text-decoration: none; margin-bottom: 16px; transition: color 0.2s; }
+    .phone-link:hover { color: var(--gold-light); }
     .phone-link svg { flex-shrink: 0; }
-    .coverage-box { background: rgba(17, 17, 17, 0.04); border: 1px solid rgba(17, 17, 17, 0.08); padding: 20px 24px; }
+    .coverage-box { background: rgba(232, 150, 12, 0.06); border: 1px solid rgba(232, 150, 12, 0.15); padding: 20px 24px; }
     .coverage-box strong { display: block; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--text); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
     .coverage-box p { font-size: 0.82rem; color: var(--muted); }
 
@@ -291,153 +319,42 @@
     .info-row:last-child { border-bottom: none; }
     .info-row .k { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .info-row .v { font-size: 0.88rem; color: var(--text); }
-    .info-row .v a { color: var(--text); text-decoration: none; font-weight: 600; }
+    .info-row .v a { color: var(--gold); text-decoration: none; }
     .info-row .v a:hover { text-decoration: underline; }
     
     .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .val { background: var(--white); padding: 32px 24px; }
     .val-icon { width: 36px; height: 36px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; }
-    .val svg { color: var(--accent); }
+    .val svg { color: var(--gold); }
     .val h4 { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em; }
     .val p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
     .val-featured { }
 
-    /* ── PORTOFOLIU ── */
-    /* ── PORTOFOLIU ── */
-#portofoliu { background: var(--white); border-top: 1px solid var(--border); }
-
-.portfolio-grid {
-  column-count: 3;
-  column-gap: 12px;
-  margin-top: 40px;
-}
-
-.portfolio-item {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: transparent;
-  margin-bottom: 12px;
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-.portfolio-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.45s ease;
-}
-
-.portfolio-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(17,17,17,.58), rgba(17,17,17,.05));
-}
-
-.portfolio-item:hover img {
-  transform: scale(1.04);
-}
-
-.portfolio-caption {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 16px;
-  z-index: 2;
-  color: var(--white);
-}
-
-.portfolio-caption strong {
-  display: block;
-  font-family: 'Barlow', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-
-.portfolio-caption span {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.78);
-}
-
-/* reset pentru vechile clase */
-.span-4,
-.span-5,
-.span-6,
-.span-7,
-.span-8,
-.tall {
-  grid-column: unset !important;
-  min-height: unset !important;
-  height: auto !important;
-}
-
-@media (max-width: 1100px) {
-  .portfolio-grid {
-    column-count: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .portfolio-grid {
-    column-count: 1;
-  }
-
-  .portfolio-item {
-    margin-bottom: 12px;
-  }
-}
-
-    /* ── CAROUSEL DOTS ── */
-    .mobile-only { display: none; }
-    .carousel-dots {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-    }
-    .carousel-dots .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(17, 17, 17, 0.18);
-      transition: background 0.25s ease, transform 0.25s ease;
-    }
-    .carousel-dots .dot.active {
-      background: var(--accent);
-      transform: scale(1.15);
-    }
-
     /* ── CONTACT ── */
     #contact { border-top: 1px solid var(--border); background: var(--white); }
     .contact-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: stretch; }
-    .contact-form { background: var(--light); border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 48px; height: 100%; display: flex; flex-direction: column; }
+    .contact-form { background: var(--light); border: 1px solid var(--border); border-top: 3px solid var(--gold); padding: 48px; height: 100%; display: flex; flex-direction: column; }
     .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--text); letter-spacing: 0.05em; margin-bottom: 32px; }
     .field { margin-bottom: 18px; }
     .field label { display: block; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
     .field input, .field textarea, .field select { width: 100%; background: var(--white); border: 1px solid var(--border); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; padding: 12px 16px; outline: none; border-radius: 2px; transition: border-color 0.2s; appearance: none; }
-    .field input:focus, .field textarea:focus, .field select:focus { border-color: rgba(17, 17, 17, 0.35); box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.05); }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: rgba(232, 150, 12, 0.5); }
     .field textarea { resize: vertical; min-height: 120px; flex-grow: 1; }
     .field select option { background: var(--white); }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-submit { width: 100%; margin-top: 8px; background: var(--accent); color: var(--white); border: none; border-radius: 2px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 15px; cursor: pointer; transition: all 0.2s; }
-    .form-submit:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .form-ok { display: none; margin-top: 16px; background: rgba(17, 17, 17, 0.06); border: 1px solid rgba(17, 17, 17, 0.18); color: var(--text); font-size: 0.88rem; font-weight: 600; padding: 14px 18px; border-radius: 2px; text-align: center; font-family: 'Barlow', sans-serif; letter-spacing: 0.04em; }
+    .form-submit { width: 100%; margin-top: 8px; background: var(--gold); color: #000; border: none; border-radius: 2px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 15px; cursor: pointer; transition: all 0.2s; }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .form-ok { display: none; margin-top: 16px; background: rgba(232, 150, 12, 0.08); border: 1px solid rgba(232, 150, 12, 0.25); color: var(--gold); font-size: 0.88rem; font-weight: 600; padding: 14px 18px; border-radius: 2px; text-align: center; font-family: 'Barlow', sans-serif; letter-spacing: 0.04em; }
     
     .contact-sidebar { display: flex; flex-direction: column; gap: 3px; height: 100%; }
     .cs-card { background: var(--light); border: 1px solid var(--border); padding: 20px 24px; display: flex; gap: 14px; align-items: center; transition: border-color 0.2s; }
-    .cs-card:hover { border-color: rgba(17, 17, 17, 0.18); background: #FAFAFA; }
-    .cs-ico { width: 40px; height: 40px; flex-shrink: 0; background: var(--soft-dark); border: 1px solid rgba(17, 17, 17, 0.08); display: flex; align-items: center; justify-content: center; border-radius: 2px; }
-    .cs-ico svg { color: var(--accent); }
+    .cs-card:hover { border-color: rgba(232, 150, 12, 0.25); }
+    .cs-ico { width: 40px; height: 40px; flex-shrink: 0; background: var(--light-gold); border: 1px solid rgba(232, 150, 12, 0.15); display: flex; align-items: center; justify-content: center; border-radius: 2px; }
+    .cs-ico svg { color: var(--gold); }
     .cs-lbl { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 3px; }
     .cs-val { font-size: 0.92rem; font-weight: 600; color: var(--text); }
     .cs-val a { color: var(--text); text-decoration: none; transition: color 0.2s; }
-    .cs-val a:hover { color: var(--accent); opacity: 0.7; }
+    .cs-val a:hover { color: var(--gold); }
     .cs-map { border: 1px solid var(--border); overflow: hidden; margin-top: 3px; border-radius: 2px; flex-grow: 1; display: flex; flex-direction: column; min-height: 250px; }
     .cs-map iframe { width: 100%; height: 100%; flex-grow: 1; display: block; border: none; }
 
@@ -445,10 +362,10 @@
     footer { background: var(--dark-section); border-top: 1px solid var(--border); padding: 56px max(32px, calc((100vw - 1280px) / 2 + 32px)) 28px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 48px; margin-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .fb-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .fb-logo img { height: 96px; display: block; object-fit: contain; }
+    .fb-logo img { height: 32px; display: block; object-fit: contain; }
     .fb-brand-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--white); letter-spacing: 0.08em; }
-    .fb-brand-name em { color: rgba(255,255,255,0.72); font-style: normal; }
-    .footer-brand p { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.8; max-width: 340px; font-family: 'Barlow', sans-serif; font-weight: 700; letter-spacing: 0.02em; }
+    .fb-brand-name em { color: var(--gold); font-style: normal; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.8; max-width: 280px; }
     .footer-col h5 { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul a { font-size: 0.87rem; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
@@ -463,6 +380,7 @@
 /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
       .hero-image { display: block; }
+      /* Pe tabletă textul e încă pe centru, deci punem un filtru alb simplu ca să se citească */
       .hero-image-overlay { background: rgba(255, 255, 255, 0.88); } 
       .hero-content { padding: 60px 40px; }
       .hero-badge { display: none; }
@@ -476,30 +394,20 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links { 
-        position: fixed; top: 68px; left: 0; right: 0; 
-        background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px);
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        gap: 32px; padding: 48px 0; list-style: none;
-        transform: translateY(-120%); transition: transform 0.4s ease, opacity 0.4s ease; 
-        border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        z-index: 190; opacity: 0; visibility: hidden;
-      }
-      .nav-links.open { transform: translateY(0); opacity: 1; visibility: visible; }
-      .nav-links a { font-size: 1.1rem; }
-      .nav-cta { padding: 12px 28px; }
-      .hamburger { display: flex; }
-
       /* --- SERVICII SCROLLABLE (MOBIL) --- */
       .services-grid { 
         display: flex; 
         overflow-x: auto; 
         scroll-snap-type: x mandatory; 
-        gap: 16px;
+        gap: 16px; /* Spațiu între carduri */
         background: transparent; 
         border: none;
+        
+        /* Extindem scroll-ul până în marginile ecranului, dar păstrăm alinierea internă */
         margin: 0 -24px; 
         padding: 0 24px 24px 24px;
+        
+        /* Ascundem bara de scroll pentru un aspect curat */
         scrollbar-width: none; 
         -ms-overflow-style: none; 
       }
@@ -508,60 +416,16 @@
       }
       
       .svc { 
-        flex: 0 0 100%;
-        scroll-snap-align: center;
-        border-radius: 6px;
+        flex: 0 0 85%; /* Cardul ocupă 85% din lățime, ca să se vadă puțin și următorul */
+        scroll-snap-align: center; /* Se centrează automat când faci scroll */
+        border-radius: 6px; /* Rotunjim puțin colțurile ca să arate a carduri individuale */
         border: 1px solid var(--border);
       }
       .section { padding: 64px 24px; }
-      .values-grid { grid-template-columns: repeat(2, 1fr); }      
+      .values-grid { grid-template-columns: 1fr; }
       .field-row { grid-template-columns: 1fr; }
-      
       .contact-form { padding: 28px 24px; }
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        align-items: start;
-      }
-
-      .footer-brand {
-        grid-column: 1 / -1;
-      }
-
-      .portfolio-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 16px;
-        margin: 0 -24px;
-        padding: 0 24px 24px 24px;
-        column-count: unset;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      }
-
-      .portfolio-grid::-webkit-scrollbar {
-        display: none;
-      }
-
-      .portfolio-item {
-        flex: 0 0 100%;
-        scroll-snap-align: center;
-        margin-bottom: 0;
-        break-inside: unset;
-        -webkit-column-break-inside: unset;
-        page-break-inside: unset;
-        border-radius: 6px;
-        height: 380px;
-      }
-
-      .portfolio-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-      }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
 
       /* --- HERO MOBIL ACTUALIZAT --- */
       #hero {
@@ -575,44 +439,53 @@
       }
       h1 {
         font-size: 2.2rem;
-        margin-bottom: 16px;
-      }
-      .hero-slogan {
-        font-size: 1rem;
-        margin-bottom: 18px;
-        max-width: 100%;
+        margin-bottom: 20px;
       }
       
+      /* Gestionare spații și <br> pe mobil */
       .br-desktop { display: none; } 
       .space-mobile { display: inline; } 
       
       .hero-desc, .hero-stats { 
         display: none; 
       }
-
       .hero-image img { 
         object-position: 75% center; 
       }
       
+      /* Gradient Mobil: alb solid jos unde stă textul -> transparent sus unde e utilajul */
       .hero-image-overlay { 
         background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0) 85%); 
-      }
-
-      .mobile-only {
-        display: flex;
-      }
-      .carousel-dots {
-        display: flex;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Promo Bar -->
+  <div class="promo-bar">
+    <div class="promo-container">
+      <div class="promo-desktop">
+        <span class="promo-text">
+          Concept demo • Conținut orientativ • Dezvoltat de sky.ro •
+          <a href="mailto:dan.trifan@sky.ro">dan.trifan@sky.ro</a> •
+          <a href="tel:+40720088880">+4 0720 088 880</a>
+        </span>
+        <a href="https://wa.me/40720088880" target="_blank" rel="noopener noreferrer" class="promo-btn">WhatsApp</a>
+      </div>
+      <div class="promo-mobile">
+        <div class="truncate">Concept demo</div>
+        <div class="no-wrap">Dezvoltat de sky.ro</div>
+        <a href="tel:+40720088880">+4 0720 088 880</a>
+      </div>
+    </div>
+  </div>
+
   <nav>
     <div class="nav-inner">
       <a href="#" class="nav-logo-box">
         <img src="logo.png" alt="Powerline Construct Logo">
+        <div class="text-logo">POWERLINE <span>CONSTRUCT</span></div>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#servicii">Servicii</a></li>
@@ -628,58 +501,65 @@
 
   <section id="hero">
     <div class="hero-content">
-      <div class="hero-label">Constanța · Sat Biruința</div>
-      <h1>
-        Instalații electrice,<br class="br-desktop"><span class="space-mobile"> </span>tablouri electrice<br>
-        și <span>lucrări mecanizate</span>
-      </h1>
-      <p class="hero-slogan">POWERLINE CONSTRUCT, luminăm vieți, nu doar case.</p>
-      <p class="hero-desc">
-        Executăm instalații electrice, tablouri electrice și curenți slabi, iar în paralel punem la dispoziție Bobcat și miniexcavator 2,7t pentru lucrări în teren. Lucrăm curat, organizat și cu accent pe siguranță.
+      <div class="hero-label">Constanța, România</div>
+<h1>
+        Instalații<br class="br-desktop"><span class="space-mobile"> </span>Electrice &<br>
+        <span>Lucrări</span><br class="br-desktop"><span class="space-mobile"> </span><span>Mecanizate</span>
+      </h1>      <p class="hero-desc">
+        Ingineri și specialiști autorizați pentru instalații electrice, automatizări, sisteme de securitate și lucrări mecanizate. Respectăm termenele, punem accent pe siguranță și calitate.
       </p>
       <div class="hero-btns">
-        <a href="#contact" class="btn btn-primary">Solicită ofertă</a>
+        <a href="#contact" class="btn btn-primary">
+          Solicită ofertă
+        </a>
         <a href="tel:0758737728" class="btn btn-ghost">0758 737 728</a>
       </div>
       <div class="hero-stats">
         <div>
-          <span class="stat-num">ANRE</span>
-          <span class="stat-label">Execuție instalații electrice</span>
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Ani experiență</span>
         </div>
         <div>
-          <span class="stat-num">2</span>
-          <span class="stat-label">Utilaje principale</span>
+          <span class="stat-num">500+</span>
+          <span class="stat-label">Proiecte finalizate</span>
         </div>
         <div>
-          <span class="stat-num">1</span>
-          <span class="stat-label">Partener pentru mai multe tipuri de lucrări</span>
+          <span class="stat-num">24h</span>
+          <span class="stat-label">Timp de răspuns</span>
         </div>
       </div>
     </div>
     <div class="hero-image">
-      <picture>
-        <source media="(max-width: 768px)" srcset="pwr4.jpeg">
-        <img src="hero.jpg" alt="Specialist Powerline Construct la tablou electric">
-      </picture>
+      <img src="hero.jpg" alt="Echipament și lucrări mecanizate">
       <div class="hero-image-overlay"></div>
+      <div class="hero-badge">
+        <strong>Autorizat ANRE</strong>
+        <span>Execuție instalații electrice</span>
+      </div>
     </div>
   </section>
 
   <div class="ticker">
     <div class="ticker-track">
       <span class="ticker-item">Instalații electrice</span>
-      <span class="ticker-item">Tablouri electrice</span>
-      <span class="ticker-item">Curenți slabi</span>
-      <span class="ticker-item">Intervenții & mentenanță</span>
+      <span class="ticker-item">Smart Home</span>
+      <span class="ticker-item">Supraveghere CCTV</span>
+      <span class="ticker-item">Control acces</span>
+      <span class="ticker-item">Miniexcavator 2.7t</span>
       <span class="ticker-item">Bobcat 773</span>
-      <span class="ticker-item">Miniexcavator 2,7t</span>
+      <span class="ticker-item">Manitou 3.5t</span>
+      <span class="ticker-item">Tăiat asfalt</span>
+      <span class="ticker-item">Săpături & fundații</span>
       <span class="ticker-item">Constanța & împrejurimi</span>
       <span class="ticker-item">Instalații electrice</span>
-      <span class="ticker-item">Tablouri electrice</span>
-      <span class="ticker-item">Curenți slabi</span>
-      <span class="ticker-item">Intervenții & mentenanță</span>
+      <span class="ticker-item">Smart Home</span>
+      <span class="ticker-item">Supraveghere CCTV</span>
+      <span class="ticker-item">Control acces</span>
+      <span class="ticker-item">Miniexcavator 2.7t</span>
       <span class="ticker-item">Bobcat 773</span>
-      <span class="ticker-item">Miniexcavator 2,7t</span>
+      <span class="ticker-item">Manitou 3.5t</span>
+      <span class="ticker-item">Tăiat asfalt</span>
+      <span class="ticker-item">Săpături & fundații</span>
       <span class="ticker-item">Constanța & împrejurimi</span>
     </div>
   </div>
@@ -688,257 +568,229 @@
     <div class="section">
       <div class="sec-header reveal">
         <div class="sec-label">Ce oferim</div>
-        <h2>Servicii principale</h2>
-          <p class="sec-desc">Executăm instalații electrice, tablouri electrice și lucrări de curenți slabi, iar la nevoie asigurăm și suport pentru lucrări mecanizate în teren.</p>      </div>
+        <h2>Serviciile noastre</h2>
+        <p class="sec-desc">Soluții complete executate de specialiști autorizați — de la instalații electrice rezidențiale și industriale până la sisteme de securitate și lucrări mecanizate.</p>
+      </div>
 
       <div class="services-grid">
-        <div class="svc reveal" style="background-image: url('pwr15.jpeg');">
+        <div class="svc reveal" style="background-image: url('instalatii_electrice.jpg');">
+          <span class="svc-num">01</span>
           <div class="svc-content">
-            <h3>Instalații electrice</h3>
-            <p>Execuție instalații electrice pentru spații rezidențiale, comerciale și tehnice, cu atenție la siguranță, trasee curate și soluții potrivite lucrării.</p>
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3>Instalații Electrice</h3>
+            <p>Proiectare și execuție instalații noi, modernizarea instalațiilor existente, reparații și mentenanță conform normelor în vigoare.</p>
+          </div>
+          <div class="svc-bar"></div>
+        </div>
+        
+        <div class="svc reveal" style="background-image: url('automatizari.jpg');">
+          <span class="svc-num">02</span>
+          <div class="svc-content">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3>Automatizări Smart Home</h3>
+            <p>Control inteligent al iluminatului, temperaturii, jaluzelelor și prizelor dintr-o singură aplicație sau prin comenzi vocale.</p>
           </div>
           <div class="svc-bar"></div>
         </div>
 
-        <div class="svc reveal" style="background-image: url('pwr7.jpeg');">
+        <div class="svc reveal" style="background-image: url('cctv.jpg');">
+          <span class="svc-num">03</span>
           <div class="svc-content">
-            <h3>Tablouri electrice</h3>
-            <p>Montaj, organizare și configurare tablouri electrice pentru alimentare sigură, protecție și distribuție corectă a circuitelor.</p>
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </div>
+            <h3>Supraveghere Video CCTV</h3>
+            <p>Instalare sisteme IP, NVR/DVR, camere interior/exterior. Monitorizare în timp real de pe orice dispozitiv, stocare locală și cloud.</p>
           </div>
           <div class="svc-bar"></div>
         </div>
 
-        <div class="svc reveal" style="background-image: url('pwr13.jpg');">
+        <div class="svc reveal" style="background-image: url('antiefractie.avif');">
+          <span class="svc-num">04</span>
           <div class="svc-content">
-            <h3>Curenți slabi</h3>
-            <p>Trasee, rack-uri, organizare cablare și integrare pentru lucrări de curenți slabi, prezentate clar și profesionist, fără a încărca inutil site-ul.</p>
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <h3>Control Acces & Antiefracție</h3>
+            <p>Sisteme de alarmă, control acces cu card sau biometric, interfoane video, automatizări porți și bariere.</p>
           </div>
           <div class="svc-bar"></div>
         </div>
 
-        <div class="svc reveal" style="background-image: url('pwr4.jpeg');">
+        <div class="svc reveal" style="background-image: url('sapaturi.jpg');">
+          <span class="svc-num">05</span>
           <div class="svc-content">
-            <h3>Intervenții & mentenanță</h3>
-            <p>Verificări, remedieri și intervenții punctuale pentru instalații și echipamente, acolo unde este nevoie de reacție rapidă și execuție corectă.</p>
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <h3>Lucrări Mecanizate & Săpături</h3>
+            <p>Execuție lucrări mecanizate cu operatori experimentați: fundații, șanțuri electrice și canalizare, demolări, nivelări și subtraversări de șosea.</p>
           </div>
           <div class="svc-bar"></div>
         </div>
 
-        <div class="svc reveal" style="background-image: url('pwr3.jpeg');">
+        <div class="svc reveal" style="background-image: url('mentenanta.jpg');">
+          <span class="svc-num">06</span>
           <div class="svc-content">
-            <h3>Bobcat 773</h3>
-            <p>Miniîncărcător pentru săpături ușoare, umpluturi, nivelări, transport materiale și lucrări rapide în spații unde contează manevrabilitatea.</p>
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Mentenanță & Intervenții</h3>
+            <p>Remediere rapidă a defecțiunilor pe instalația electrică, revizii anuale și asistență tehnică specializată pentru a asigura funcționarea în parametri.</p>
           </div>
           <div class="svc-bar"></div>
         </div>
-
-        <div class="svc reveal" style="background-image: url('pwr12.JPG');">
-          <div class="svc-content">
-            <h3>Miniexcavator 2,7t</h3>
-            <p>Pentru șanțuri, fundații, decopertări și lucrări de teren executate controlat, inclusiv în curți sau zone mai greu accesibile.</p>
-          </div>
-          <div class="svc-bar"></div>
-        </div>
-      </div>
-      <div class="carousel-dots services-dots mobile-only">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
       </div>
     </div>
   </section>
+
   <section id="utilaje">
     <div class="section">
       <div class="utilaje-layout">
         <div>
-          <div class="sec-label reveal">Utilaje</div>
-          <h2 class="reveal">Bobcat & miniexcavator</h2>
-          <p class="sec-desc reveal" style="margin-bottom:40px">Punem la dispoziție Bobcat 773 și miniexcavator 2,7t pentru săpături, nivelări și alte intervenții în teren, în funcție de nevoile lucrării.</p>
+          <div class="sec-label reveal">Parc utilaje</div>
+          <h2 class="reveal">Închiriere utilaje<br>Constanța</h2>
+          <p class="sec-desc reveal" style="margin-bottom:40px">Utilaje moderne disponibile cu sau fără operator pentru lucrări agricole, industriale și de construcții.</p>
           <div class="utilaje-list">
             <div class="utilaj reveal">
-              <div class="utilaj-ico"><img src="bobcat773.png" alt="Bobcat 773"></div>
+              <div class="utilaj-ico">
+                <img src="miniexcavator2.7t.png" alt="Miniexcavator">
+              </div>
               <div>
-                <h4>Bobcat 773</h4>
-                <p>Miniîncărcător potrivit pentru încărcare, evacuare material, nivelări, curățare și sprijin pentru diferite etape ale lucrării.</p>
+                <h4>Miniexcavator 2,7t</h4>
+                <p>Cupă multifuncțională. Cupe disponibile: 20 / 40 / 60 / 80 / 120 cm și picon. Ideal pentru săpături precise în spații restrânse, șanțuri și fundații.</p>
               </div>
             </div>
             <div class="utilaj reveal">
-              <div class="utilaj-ico"><img src="miniexcavator2.7t.png" alt="Miniexcavator 2,7t"></div>
+              <div class="utilaj-ico">
+                <img src="bobcat773.png" alt="Bobcat">
+              </div>
               <div>
-                <h4>Miniexcavator 2,7t</h4>
-                <p>Ideal pentru săpături de precizie, fundații, șanțuri și lucrări în curți sau pe terenuri unde accesul este limitat.</p>
+                <h4>Bobcat 773 – Miniîncărcător 2,7t</h4>
+                <p>Cupă multifuncțională, lamă paleți. Deszăpezit, curățat saivane, umplut fundații, încărcat și transportat materiale.</p>
+              </div>
+            </div>
+            <div class="utilaj reveal">
+              <div class="utilaj-ico">
+                <img src="manitou.png" alt="Manitou">
+              </div>
+              <div>
+                <h4>Manitou 3,5t</h4>
+                <p>Ridică până la 3,5t la o înălțime de 7m. Ideal pentru baloți, fân, paleți grei și materiale de construcții.</p>
+              </div>
+            </div>
+            <div class="utilaj reveal">
+              <div class="utilaj-ico">
+                <img src="taiat_asfalt.png" alt="Mașini tăiat asfalt">
+              </div>
+              <div>
+                <h4>Mașini tăiat asfalt</h4>
+                <p>Tăieri de precizie pentru subtraversări de șosea, intervenții în carosabil și lucrări de infrastructură rutieră.</p>
               </div>
             </div>
           </div>
         </div>
-
+        
         <div class="utilaje-right">
           <div class="utilaje-cta reveal">
-            <strong>Lucrări electrice și mecanizate, într-un singur loc</strong>
-            <p>Când proiectul cere atât execuție electrică, cât și intervenție în teren, colaborarea este mai simplă și mai rapidă. Oferta se face în funcție de lucrare.</p>
+            <strong>Disponibile în Constanța și împrejurimi</strong>
+            <p>Contactați-ne pentru disponibilitate, prețuri și detalii despre închiriere cu sau fără operator. Oferim tarife competitive și flexibilitate pentru orice tip de proiect.</p>
             <a href="tel:0758737728" class="phone-link">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.74a16 16 0 006.29 6.29l.96-.92a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
               0758 737 728
             </a>
-            <a href="#contact" class="btn btn-primary" style="align-self:flex-start">Solicită ofertă</a>
+            <a href="tel:0758737728" class="btn btn-primary" style="align-self:flex-start">Sună acum</a>
           </div>
           <div class="coverage-box reveal">
             <strong>Zonă de acoperire</strong>
-            <p>Sat Biruința, Constanța și împrejurimi. Pentru alte zone, disponibilitatea se stabilește în funcție de lucrare.</p>
+            <p>Operăm în Constanța și zona limitrofă. Contactați-ne pentru disponibilitate în afara zonei.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
   <section id="despre">
     <div class="section">
       <div class="despre-layout">
         <div class="despre-text">
           <div class="sec-label reveal">Cine suntem</div>
-          <h2 class="reveal">Powerline Construct</h2>
-          <p class="reveal">Powerline Construct este un partener de încredere pentru lucrări electrice și intervenții în teren, cu soluții adaptate proiectelor rezidențiale, comerciale și tehnice.</p>
-<p class="reveal">Activitatea este coordonată tehnic de un inginer electrotehnician, iar serviciile acoperă instalații electrice, tablouri electrice, curenți slabi și lucrări mecanizate, în funcție de nevoile proiectului.</p>
+          <h2 class="reveal">Powerline<br>Construct SRL</h2>
+          <p class="reveal">Suntem o echipă de ingineri și specialiști cu experiență solidă în instalații electrice, sisteme de curenți slabi și lucrări mecanizate. Ne desfășurăm activitatea în județul Constanța și în împrejurimi.</p>
+          <p class="reveal">Fiecare proiect este tratat cu seriozitate: respectăm termenele asumate, lucrăm conform normativelor în vigoare și folosim materiale și echipamente de calitate.</p>
+
           <div class="info-grid reveal">
-            <div class="info-row"><span class="k">Sediu</span><span class="v">Sat Biruința, Strada Nemuririi nr. 4</span></div>
-            <div class="info-row"><span class="k">Coordonare</span><span class="v">Inginer electrotehnician - Florin Aurel Axinte</span></div>
-            <div class="info-row"><span class="k">Telefon</span><span class="v"><a href="tel:0758737728">0758 737 728 </a></span></div>
-            <div class="info-row"><span class="k">Email</span><span class="v"><a href="mailto:powerconstruct@yahoo.com">powerconstruct@yahoo.com</a></span></div>
-            <div class="info-row"><span class="k">Program</span><span class="v">Luni-Sâmbătă: 08:00 - 19:00</span></div>
+            <div class="info-row">
+              <span class="k">Sediu</span>
+              <span class="v">Sat Biruința, Com. Topraisar, Str. Nemuririi nr. 4</span>
+            </div>
+            <div class="info-row">
+              <span class="k">Zonă</span>
+              <span class="v">Constanța și împrejurimi</span>
+            </div>
+            <div class="info-row">
+              <span class="k">Contact</span>
+              <span class="v"><a href="tel:0758737728">0758 737 728</a> — Florin</span>
+            </div>
+            <div class="info-row">
+              <span class="k">Email</span>
+              <span class="v"><a href="mailto:aurel.florin10@yahoo.com">aurel.florin10@yahoo.com</a></span>
+            </div>
+            <div class="info-row">
+              <span class="k">Program</span>
+              <span class="v">Luni – Sâmbătă, 08:00 – 19:00</span>
+            </div>
           </div>
         </div>
-
+        
         <div class="despre-image-wrapper reveal">
-          <img src="cinesuntem.jpeg" alt="Echipa Powerline Construct la lucru" class="despre-img">
+          <img src="cinesutem.avif" alt="Specialist Powerline Construct" class="despre-img">
         </div>
       </div>
 
       <div class="values-grid reveal">
         <div class="val val-featured">
-          <div class="val-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <h4>Execuție curată</h4>
-          <p>Trasee organizate, lucrări clare și atenție la detalii, atât în partea electrică, cât și în teren.</p>
+          <div class="val-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>Calitate garantată</h4>
+          <p>Materiale și echipamente premium. Lucrări executate conform normelor tehnice în vigoare.</p>
         </div>
         <div class="val">
-          <div class="val-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h4>Fără complicații</h4>
-          <p>Comunicare directă, soluții clare și intervenții bine organizate.</p>
+          <div class="val-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Termene respectate</h4>
+          <p>Ne asumăm termenele și le respectăm. Comunicare clară pe tot parcursul lucrării.</p>
         </div>
         <div class="val">
-          <div class="val-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="val-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
           <h4>Siguranță</h4>
-          <p>Respectăm normele și tratăm fiecare lucrare cu responsabilitate.</p>
+          <p>Lucrăm cu echipamente de protecție și respectăm toate normele de securitate la fața locului.</p>
         </div>
         <div class="val">
-          <div class="val-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <h4>Ofertă personalizată</h4>
-          <p>Analizăm lucrarea și revenim cu o ofertă potrivită, în funcție de cerințe și complexitate.</p>
+          <div class="val-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h4>Transparență</h4>
+          <p>Oferte clare și detaliate. Nicio taxă ascunsă la final. Factură fiscală pentru fiecare lucrare.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="portofoliu">
-  <div class="section">
-    <div class="sec-header reveal">
-      <div class="sec-label">Lucrări reale</div>
-      <h2>Galerie scurtă din teren</h2>
-    </div>
-
-    <div class="portfolio-grid">
-      <div class="portfolio-item reveal">
-        <img src="pwr4.jpeg" alt="Intervenție electrică tehnică">
-        <div class="portfolio-caption">
-          <strong>Execuție electrică</strong>
-          <span>Intervenții și lucrări tehnice în teren</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr7.jpeg" alt="Tablou electric Powerline Construct">
-        <div class="portfolio-caption">
-          <strong>Tablouri electrice</strong>
-          <span>Montaj și organizare pentru alimentare sigură</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr3.jpeg" alt="Bobcat 773 pe platformă">
-        <div class="portfolio-caption">
-          <strong>Bobcat 773</strong>
-          <span>Transport și pregătire pentru intervenție</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr15.jpeg" alt="Cablare și rack Powerline Construct">
-        <div class="portfolio-caption">
-          <strong>Cablare & rack</strong>
-          <span>Lucrări de curenți slabi și organizare tehnică</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr16.jpg" alt="Lucrări tehnice în spații dedicate">
-        <div class="portfolio-caption">
-          <strong>Curenți slabi</strong>
-          <span>Trasee și integrare pentru lucrări tehnice</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr11.jpeg" alt="Miniexcavator la lucrare">
-        <div class="portfolio-caption">
-          <strong>Miniexcavator 2,7t</strong>
-          <span>Sprijin pentru lucrări de săpătură și fundații</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr8.jpeg" alt="Excavație rezidențială">
-        <div class="portfolio-caption">
-          <strong>Excavații rezidențiale</strong>
-          <span>Spații pregătite pentru etape următoare de execuție</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr9.jpeg" alt="Bobcat în teren">
-        <div class="portfolio-caption">
-          <strong>Lucrări în teren</strong>
-          <span>Manevrabilitate pentru spații dificile</span>
-        </div>
-      </div>
-
-      <div class="portfolio-item reveal">
-        <img src="pwr10.jpeg" alt="Execuție în curți și proprietăți">
-        <div class="portfolio-caption">
-          <strong>Execuție în curți și proprietăți</strong>
-          <span>Lucrări controlate, adaptate spațiului disponibil</span>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-dots portfolio-dots mobile-only">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-  </div>
-</section>
   <section id="contact">
     <div class="section">
       <div class="sec-header reveal">
         <div class="sec-label">Contactează-ne</div>
         <h2>Solicită o ofertă</h2>
-        <p class="sec-desc">Completează formularul sau sună-ne direct. Revenim cu ofertă în cel mai scurt timp posibil.</p>
+        <p class="sec-desc">Completează formularul sau sună-ne direct. Răspundem în cel mai scurt timp cu o ofertă adaptată nevoilor tale.</p>
       </div>
       <div class="contact-layout">
         <div class="contact-form reveal">
@@ -953,11 +805,11 @@
             <select id="fs">
               <option value="" disabled selected>Selectează un serviciu...</option>
               <option>Instalații electrice</option>
-              <option>Tablouri electrice</option>
-              <option>Curenți slabi</option>
-              <option>Intervenții / mentenanță</option>
-              <option>Bobcat 773</option>
-              <option>Miniexcavator 2,7t</option>
+              <option>Automatizări Smart Home</option>
+              <option>Supraveghere video CCTV</option>
+              <option>Control acces & antiefracție</option>
+              <option>Lucrări mecanizate / Săpături</option>
+              <option>Închiriere utilaje</option>
               <option>Altceva</option>
             </select>
           </div>
@@ -972,22 +824,22 @@
         <div class="contact-sidebar">
           <div class="cs-card reveal">
             <div class="cs-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.74a16 16 0 006.29 6.29l.96-.92a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-            <div><span class="cs-lbl">Telefon / WhatsApp</span><div class="cs-val"><a href="tel:0758737728">0758 737 728<br> Florin Aurel Axinte</a></div></div>
+            <div><span class="cs-lbl">Telefon / WhatsApp</span><div class="cs-val"><a href="tel:0758737728">0758 737 728</a></div></div>
           </div>
           <div class="cs-card reveal">
             <div class="cs-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><span class="cs-lbl">Email</span><div class="cs-val"><a href="mailto:powerconstruct@yahoo.com">powerconstruct@yahoo.com</a></div></div>
+            <div><span class="cs-lbl">Email</span><div class="cs-val"><a href="mailto:aurel.florin10@yahoo.com">aurel.florin10@yahoo.com</a></div></div>
           </div>
           <div class="cs-card reveal">
             <div class="cs-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><span class="cs-lbl">Locație</span><div class="cs-val">Sat Biruința, Strada Nemuririi nr. 4</div></div>
+            <div><span class="cs-lbl">Locație</span><div class="cs-val">Topraisar / Constanța, România</div></div>
           </div>
           <div class="cs-card reveal">
             <div class="cs-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
             <div><span class="cs-lbl">Program</span><div class="cs-val">Luni – Sâmbătă, 08:00 – 19:00</div></div>
           </div>
           <div class="cs-map reveal">
-            <iframe src="https://www.google.com/maps?q=Sat%20Biruinta%20Strada%20Nemuririi%204&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d183063.83419086118!2d28.508587123985732!3d44.18073575971165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40bae54a64345229%3A0x637bb1f00f13013b!2sConstan%C8%9Ba!5e0!3m2!1sen!2sro!4v1700000000000!5m2!1sen!2sro" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
@@ -1000,28 +852,27 @@
         <div class="footer-brand">
           <div class="fb-logo">
             <img src="logo.png" alt="Powerline Construct Logo">
+            <span class="fb-brand-name"><em>POWERLINE</em> CONSTRUCT</span>
           </div>
-          <p>Luminăm vieți, nu doar case.</p>
+          <p>Ingineri și specialiști pentru instalații electrice, sisteme de curenți slabi și lucrări mecanizate în județul Constanța.</p>
         </div>
         <div class="footer-col">
           <h5>Servicii</h5>
           <ul>
             <li><a href="#servicii">Instalații electrice</a></li>
-            <li><a href="#servicii">Tablouri electrice</a></li>
-            <li><a href="#servicii">Curenți slabi</a></li>
-            <li><a href="#servicii">Intervenții & mentenanță</a></li>
-            <li><a href="#utilaje">Lucrări mecanizate</a></li>
+            <li><a href="#servicii">Smart Home</a></li>
+            <li><a href="#servicii">Supraveghere CCTV</a></li>
+            <li><a href="#servicii">Control acces</a></li>
+            <li><a href="#servicii">Lucrări mecanizate</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>Sitemap</h5>
+          <h5>Utilaje</h5>
           <ul>
-            <li><a href="#">Acasă</a></li>
-            <li><a href="#servicii">Servicii</a></li>
-            <li><a href="#utilaje">Utilaje</a></li>
-            <li><a href="#despre">Despre noi</a></li>
-            <li><a href="#portofoliu">Galerie</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#utilaje">Miniexcavator 2,7t</a></li>
+            <li><a href="#utilaje">Bobcat 773</a></li>
+            <li><a href="#utilaje">Manitou 3,5t</a></li>
+            <li><a href="#utilaje">Mașini tăiat asfalt</a></li>
           </ul>
         </div>
       </div>
@@ -1036,15 +887,16 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/40758737728" target="_blank" rel="noopener noreferrer" aria-label="Chat pe WhatsApp" class="whatsapp-float">
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/40720088880" target="_blank" rel="noopener noreferrer" aria-label="Chat pe WhatsApp" class="whatsapp-float">
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
     </svg>
   </a>
 
   <script>
+    // Meniu Hamburger (Global)
     function toggleNav() {
-      if (window.innerWidth > 768) return;
       document.getElementById('navLinks').classList.toggle('open');
       document.getElementById('burger').classList.toggle('open');
     }
@@ -1055,7 +907,12 @@
         document.getElementById('burger').classList.remove('open');
       });
     });
+    
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
 
+    // Animații de tip Fade-In la scroll
     const observerOptions = {
       threshold: 0.1
     };
@@ -1071,6 +928,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // Validare și trimitere formular contact (Mailto)
     function handleForm() {
       const nume = document.getElementById('fn').value.trim();
       const telefon = document.getElementById('fp').value.trim();
@@ -1092,28 +950,9 @@
         'Mesaj:\n' + mesaj
       );
 
-      window.location.href = 'mailto:powerconstruct@yahoo.com?subject=' + subiectMail + '&body=' + corpMail;
+      window.location.href = 'mailto:aurel.florin10@yahoo.com?subject=' + subiectMail + '&body=' + corpMail;
       document.getElementById('formOk').style.display = 'block';
     }
-
-    function setupCarouselDots(trackSelector, dotsSelector) {
-      const track = document.querySelector(trackSelector);
-      const dots = document.querySelectorAll(`${dotsSelector} .dot`);
-      if (!track || !dots.length) return;
-      function updateDots() {
-        const maxScroll = track.scrollWidth - track.clientWidth;
-        const scrollRatio = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
-        const activeIndex = Math.min(Math.floor(scrollRatio * dots.length), dots.length - 1);
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === activeIndex);
-        });
-      }
-      track.addEventListener('scroll', updateDots, { passive: true });
-      window.addEventListener('resize', updateDots);
-      updateDots();
-    }
-    setupCarouselDots('.services-grid', '.services-dots');
-    setupCarouselDots('.portfolio-grid', '.portfolio-dots');
   </script>
 </body>
 </html>
