@@ -962,13 +962,13 @@
         <div class="contact-form reveal">
           <div class="form-title">Trimite un mesaj</div>
           <div class="field-row">
-            <div class="field"><label>Nume *</label><input type="text" id="fn" placeholder="Numele tău"></div>
-            <div class="field"><label>Telefon *</label><input type="tel" id="fp" placeholder="07xx xxx xxx"></div>
+            <div class="field"><label>Nume *</label><input type="text" id="fn" placeholder="Numele tău" required></div>
+            <div class="field"><label>Telefon *</label><input type="tel" id="fp" placeholder="07xx xxx xxx" required></div>
           </div>
-          <div class="field"><label>Email</label><input type="email" id="fe" placeholder="email@exemplu.ro"></div>
+          <div class="field"><label>Email *</label><input type="email" id="fe" placeholder="email@exemplu.ro" required></div>
           <div class="field">
             <label>Serviciu dorit *</label>
-            <select id="fs">
+            <select id="fs" required>
               <option value="" disabled selected>Selectează un serviciu...</option>
               <option>Instalații electrice</option>
               <option>Tablouri electrice</option>
@@ -982,7 +982,7 @@
           </div>
           <div class="field" style="display: flex; flex-direction: column; flex-grow: 1;">
             <label>Mesaj *</label>
-            <textarea id="fm" placeholder="Descrie pe scurt ce ai nevoie..."></textarea>
+            <textarea id="fm" placeholder="Descrie pe scurt ce ai nevoie..." required></textarea>
           </div>
           <button class="form-submit" onclick="handleForm()">Trimite mesajul</button>
           <div class="form-ok" id="formOk">Mulțumim! Vă contactăm în cel mai scurt timp.</div>
@@ -1094,7 +1094,7 @@
       const email = document.getElementById('fe').value.trim();
       const formOk = document.getElementById('formOk');
 
-      if (!nume || !telefon || !serviciu || !mesaj) {
+      if (!nume || !telefon || !email || !serviciu || !mesaj) {
         alert('Te rugăm să completezi toate câmpurile obligatorii (*).');
         return;
       }

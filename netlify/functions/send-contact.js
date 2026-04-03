@@ -20,7 +20,7 @@ exports.handler = async (event) => {
     const serviciu = (data.serviciu || '').trim();
     const mesaj = (data.mesaj || '').trim();
 
-    if (!nume || !telefon || !serviciu || !mesaj) {
+    if (!nume || !telefon || !email || !serviciu || !mesaj) {
       return {
         statusCode: 400,
         headers: {
