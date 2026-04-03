@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Powerline Construct | Instalații electrice, tablouri electrice și lucrări mecanizate</title>
-  <meta name="description" content="Executăm instalații electrice, tablouri electrice, curenți slabi și lucrări mecanizate cu Bobcat și miniexcavator 2,7t. Contact pentru ofertă în Constanța și împrejurimi.">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+   <meta name="description" content="Executăm instalații electrice, tablouri electrice, curenți slabi și lucrări mecanizate cu Bobcat și miniexcavator 2,7t. Contact pentru ofertă în Constanța și împrejurimi.">
+
+   <link rel="icon" href="logo.png">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Barlow:wght@500;600;700&display=swap" rel="stylesheet">
   
   <style>
@@ -1084,29 +1086,50 @@
     }, observerOptions);
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    function handleForm() {
+    async function handleForm() {
       const nume = document.getElementById('fn').value.trim();
       const telefon = document.getElementById('fp').value.trim();
       const serviciu = document.getElementById('fs').value;
       const mesaj = document.getElementById('fm').value.trim();
       const email = document.getElementById('fe').value.trim();
+      const formOk = document.getElementById('formOk');
 
       if (!nume || !telefon || !serviciu || !mesaj) {
         alert('Te rugăm să completezi toate câmpurile obligatorii (*).');
         return;
       }
 
-      const subiectMail = encodeURIComponent('Cerere oferta – ' + serviciu);
-      const corpMail = encodeURIComponent(
-        'Nume: ' + nume + '\n' +
-        'Telefon: ' + telefon + '\n' +
-        'Email: ' + (email || '-') + '\n' +
-        'Serviciu: ' + serviciu + '\n\n' +
-        'Mesaj:\n' + mesaj
-      );
+      try {
+        const response = await fetch('/.netlify/functions/send-contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            nume,
+            telefon,
+            email,
+            serviciu,
+            mesaj
+          })
+        });
 
-      window.location.href = 'mailto:powerconstruct@yahoo.com?subject=' + subiectMail + '&body=' + corpMail;
-      document.getElementById('formOk').style.display = 'block';
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || 'Eroare la trimitere.');
+        }
+
+        formOk.style.display = 'block';
+
+        document.getElementById('fn').value = '';
+        document.getElementById('fp').value = '';
+        document.getElementById('fe').value = '';
+        document.getElementById('fs').selectedIndex = 0;
+        document.getElementById('fm').value = '';
+      } catch (error) {
+        alert(error.message || 'A apărut o eroare. Încearcă din nou.');
+      }
     }
 
     function setupCarouselDots(trackSelector, dotsSelector) {
