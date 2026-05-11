@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politica de confidențialitate - Powerline Construct</title>
+   <meta name="description" content="Politica de confidențialitate a site-ului powerlineconstruct.ro.">
+
+   <link rel="icon" href="logo.png">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Barlow:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --light: #F5F5F5;
+      --light-2: #EFEFEF;
+      --dark-section: #171717;
+      --border: rgba(0, 0, 0, 0.10);
+      --text: #111111;
+      --muted: #6B7280;
+      --accent: #111111;
+      --accent-hover: #2A2A2A;
+      --soft-dark: rgba(17, 17, 17, 0.06);
+      --soft-dark-2: rgba(17, 17, 17, 0.10);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--accent); margin-bottom: 40px; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent-hover); }
+    .back-link svg { width: 16px; height: 16px; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--text); margin-bottom: 20px; letter-spacing: 0.02em; }
+    .update-info { font-size: 0.9rem; color: var(--muted); margin-bottom: 40px; border-left: 2px solid var(--accent); padding-left: 16px; }
+    .content h2 { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--text); margin-top: 32px; margin-bottom: 16px; letter-spacing: 0.02em; }
+    .content p { margin-bottom: 16px; line-height: 1.7; }
+    .content ul { margin-bottom: 16px; padding-left: 20px; }
+    .content li { margin-bottom: 8px; }
+
+    @media (max-width: 768px) {
+      .container { padding: 20px 16px; }
+      h1 { font-size: 2rem; }
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 68px;
+      background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 1280px; margin: 0 auto; height: 100%; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo-box {
+      background: var(--dark-section);
+      height: 100%;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      margin-left: -32px;
+      text-decoration: none;
+    }
+    .nav-logo-box img { height: 50px; display: block; object-fit: contain; }
+    .text-logo { display: none; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); opacity: 0.7; }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 12px 20px; border-radius: 2px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--accent-hover) !important; color: var(--white) !important; opacity: 1 !important; }
+    
+    .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 6px; z-index: 201; }
+    .hamburger span { width: 26px; height: 2px; background: var(--text); display: block; transition: all 0.3s ease-in-out; transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 9999px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 32px; height: 32px; }
+
+    footer { background: var(--dark-section); border-top: 1px solid var(--border); padding: 56px max(32px, calc((100vw - 1280px) / 2 + 32px)) 28px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 48px; margin-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .fb-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .fb-logo img { height: 96px; display: block; object-fit: contain; }
+    .footer-brand p { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.8; max-width: 340px; font-family: 'Barlow', sans-serif; font-weight: 700; letter-spacing: 0.02em; }
+    .footer-col h5 { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 0.87rem; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+    @media (max-width: 1100px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed; top: 68px; left: 0; right: 0;
+        background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 32px; padding: 48px 0; list-style: none;
+        transform: translateY(-120%); transition: transform 0.4s ease, opacity 0.4s ease;
+        border-bottom: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        z-index: 190; opacity: 0; visibility: hidden;
+      }
+      .nav-links.open { transform: translateY(0); opacity: 1; visibility: visible; }
+      .nav-links a { font-size: 1.1rem; }
+      .nav-cta { padding: 12px 28px; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo-box">
+        <img src="logo.png" alt="Powerline Construct Logo">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#servicii">Servicii</a></li>
+        <li><a href="index.html#utilaje">Utilaje</a></li>
+        <li><a href="index.html#despre">Despre noi</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contactează-ne</a></li>
+      </ul>
+      <div class="hamburger" id="burger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <a href="index.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Înapoi la acasă
+    </a>
+    
+    <h1>Politica de confidențialitate</h1>
+    
+    <div class="update-info">
+      Ultima actualizare: 11.05.2026
+    </div>
+    
+    <div class="content">
+      <p>Această Politică de confidențialitate explică modul în care site-ul powerlineconstruct.ro colectează, utilizează și protejează datele cu caracter personal ale persoanelor care accesează site-ul sau care contactează compania prin formular, telefon, WhatsApp sau e-mail.</p>
+
+      <p>Site-ul powerlineconstruct.ro este un site de prezentare pentru servicii de instalații electrice, tablouri electrice, curenți slabi, intervenții tehnice, mentenanță și lucrări mecanizate în teren. Site-ul nu permite efectuarea de plăți online și nu funcționează ca magazin online.</p>
+
+      <h2>1. Cine suntem</h2>
+
+      <p>Operatorul datelor cu caracter personal este:</p>
+
+      <p><strong>POWERLINE CONSTRUCT SRL</strong><br>
+      CUI: 53267247<br>
+      Nr. Reg. Com.: J2026002166009<br>
+      EUID: ROONRC.J2026002166009<br>
+      Data înființării: 15.01.2026<br>
+      Sediu: Sat Biruința, Str. Nemuririi nr. 4, județ Constanța<br>
+      E-mail: powerconstruct@yahoo.com<br>
+      Telefon: 0758 737 728</p>
+
+      <p>Pentru orice întrebare legată de prelucrarea datelor personale, ne puteți contacta la adresa de e-mail menționată mai sus.</p>
+
+      <h2>2. Ce date personale colectăm</h2>
+
+      <p>Putem colecta următoarele categorii de date personale:</p>
+
+      <ul>
+        <li>nume și prenume;</li>
+        <li>număr de telefon;</li>
+        <li>adresă de e-mail;</li>
+        <li>compania pe care o reprezentați, dacă este cazul;</li>
+        <li>informații transmise voluntar prin formularul de contact, telefon, WhatsApp sau e-mail;</li>
+        <li>serviciul dorit, de exemplu instalații electrice, tablouri electrice, curenți slabi, intervenții, mentenanță sau lucrări mecanizate;</li>
+        <li>detalii legate de solicitarea transmisă, cum ar fi tipul lucrării, locația proiectului, accesul în teren, complexitatea lucrării sau alte informații necesare pentru ofertare;</li>
+        <li>date tehnice limitate, precum adresa IP, tipul browserului, dispozitivul folosit sau informații generate prin utilizarea site-ului.</li>
+      </ul>
+
+      <h2>3. Cum colectăm datele</h2>
+
+      <p>Datele pot fi colectate atunci când:</p>
+
+      <ul>
+        <li>completați formularul de contact;</li>
+        <li>solicitați o ofertă;</li>
+        <li>ne contactați telefonic;</li>
+        <li>ne trimiteți un mesaj pe WhatsApp;</li>
+        <li>ne trimiteți un e-mail;</li>
+        <li>accesați pagini ale site-ului care includ servicii externe, precum Google Maps.</li>
+      </ul>
+
+      <h2>4. Scopul prelucrării datelor</h2>
+
+      <p>Folosim datele personale pentru:</p>
+
+      <ul>
+        <li>a răspunde solicitărilor primite;</li>
+        <li>a analiza cererile de ofertă;</li>
+        <li>a comunica informații legate de serviciile solicitate;</li>
+        <li>a stabili detalii tehnice sau comerciale privind o posibilă lucrare;</li>
+        <li>a evalua disponibilitatea echipei sau a utilajelor;</li>
+        <li>a pregăti o ofertă personalizată;</li>
+        <li>a îmbunătăți funcționarea site-ului;</li>
+        <li>a respecta obligațiile legale aplicabile.</li>
+      </ul>
+
+      <p>Nu folosim datele personale pentru vânzarea de produse online, deoarece site-ul powerlineconstruct.ro nu are funcție de magazin online.</p>
+
+      <h2>5. Temeiul legal al prelucrării</h2>
+
+      <p>Prelucrăm datele personale în baza unuia sau mai multor temeiuri legale:</p>
+
+      <ul>
+        <li>consimțământul persoanei vizate, atunci când ne transmite voluntar date prin formular, telefon, WhatsApp sau e-mail;</li>
+        <li>interesul legitim de a răspunde solicitărilor și de a administra site-ul;</li>
+        <li>demersuri necesare înainte de încheierea unui contract sau a unei colaborări;</li>
+        <li>obligații legale, acolo unde este cazul.</li>
+      </ul>
+
+      <h2>6. Servicii externe</h2>
+
+      <p>Site-ul poate integra servicii externe, precum Google Maps, pentru afișarea locației companiei.</p>
+
+      <p>Atunci când interacționați cu harta sau când aceasta este încărcată în pagină, Google poate colecta anumite date tehnice, conform propriilor politici de confidențialitate.</p>
+
+      <h2>7. Cui putem transmite datele</h2>
+
+      <p>Datele personale pot fi transmise, dacă este necesar, către:</p>
+
+      <ul>
+        <li>furnizori de găzduire web și mentenanță site;</li>
+        <li>furnizori de servicii IT;</li>
+        <li>furnizori de servicii externe integrate în site, cum este Google Maps;</li>
+        <li>colaboratori sau parteneri implicați în analizarea unei solicitări, doar dacă este necesar pentru lucrarea cerută;</li>
+        <li>autorități publice, dacă există o obligație legală.</li>
+      </ul>
+
+      <p>Nu vindem și nu închiriem datele personale către terți.</p>
+
+      <h2>8. Cât timp păstrăm datele</h2>
+
+      <p>Păstrăm datele doar atât timp cât este necesar pentru scopurile pentru care au fost colectate.</p>
+
+      <p>Datele transmise prin formular, telefon, WhatsApp sau e-mail pot fi păstrate pe durata necesară pentru soluționarea solicitării, pentru comunicări ulterioare legate de ofertare sau colaborare și, dacă este cazul, conform obligațiilor legale aplicabile.</p>
+
+      <h2>9. Drepturile dumneavoastră</h2>
+
+      <p>În condițiile prevăzute de legislația aplicabilă, aveți următoarele drepturi:</p>
+
+      <ul>
+        <li>dreptul de acces la date;</li>
+        <li>dreptul la rectificarea datelor;</li>
+        <li>dreptul la ștergerea datelor;</li>
+        <li>dreptul la restricționarea prelucrării;</li>
+        <li>dreptul la opoziție;</li>
+        <li>dreptul la portabilitatea datelor;</li>
+        <li>dreptul de a vă retrage consimțământul, acolo unde prelucrarea se bazează pe consimțământ;</li>
+        <li>dreptul de a depune o plângere la autoritatea competentă.</li>
+      </ul>
+
+      <p>Pentru exercitarea acestor drepturi, ne puteți contacta la: powerconstruct@yahoo.com.</p>
+
+      <h2>10. Securitatea datelor</h2>
+
+      <p>Luăm măsuri tehnice și organizatorice rezonabile pentru protejarea datelor personale împotriva accesului neautorizat, pierderii, modificării sau divulgării neautorizate.</p>
+
+      <h2>11. Modificări ale politicii</h2>
+
+      <p>Această Politică de confidențialitate poate fi actualizată periodic. Versiunea actualizată va fi publicată pe această pagină, împreună cu data ultimei actualizări.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner" style="max-width:1280px; margin:0 auto;">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fb-logo">
+            <img src="logo.png" alt="Powerline Construct Logo">
+          </div>
+          <p>Luminăm vieți, nu doar case.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Servicii</h5>
+          <ul>
+            <li><a href="index.html#servicii">Instalații electrice</a></li>
+            <li><a href="index.html#servicii">Tablouri electrice</a></li>
+            <li><a href="index.html#servicii">Curenți slabi</a></li>
+            <li><a href="index.html#servicii">Intervenții & mentenanță</a></li>
+            <li><a href="index.html#utilaje">Lucrări mecanizate</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Sitemap</h5>
+          <ul>
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="index.html#servicii">Servicii</a></li>
+            <li><a href="index.html#utilaje">Utilaje</a></li>
+            <li><a href="index.html#despre">Despre noi</a></li>
+            <li><a href="index.html#portofoliu">Galerie</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="politica-de-confidentialitate">Politica de confidențialitate</a></li>
+            <li><a href="politica-de-cookies">Politica de cookies</a></li>
+            <li><a href="termeni-si-conditii">Termeni și condiții</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Powerline Construct SRL · Toate drepturile rezervate</p>
+        <div class="sky-credit">
+          <a href="https://sky.ro" target="_blank">
+            Crafted in the clouds by <img src="skyro.png" alt="sky.ro logo">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/40758737728" target="_blank" rel="noopener noreferrer" aria-label="Chat pe WhatsApp" class="whatsapp-float">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <script>
+    function toggleNav() {
+      if (window.innerWidth > 768) return;
+      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('burger').classList.toggle('open');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+        document.getElementById('burger').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
